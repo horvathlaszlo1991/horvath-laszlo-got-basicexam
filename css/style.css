@@ -1,0 +1,8 @@
+.container{
+    background-image: url("../assets/site/mapblue.jpg");
+}
+
+.one-character{
+    width: 12%;
+    display: inline-block;
+}
