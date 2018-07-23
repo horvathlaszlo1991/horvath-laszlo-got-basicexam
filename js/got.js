@@ -26,6 +26,7 @@ function successAjax(xhttp) {
   sortOutDeadCharacters(Data);
   sortCharactersByName(Data);
   insertCharacters(Data);
+  showClickedCharacter(Data);
   console.log(Data);
 }
 
@@ -36,11 +37,17 @@ getData('/json/characters.json', successAjax);
 /* IDE ÍRD A FÜGGVÉNYEKET!!!!!! NE EBBE AZ EGY SORBA HANEM INNEN LEFELÉ! */
 
 
+var onediv = document.querySelector('.onediv');
+onediv.innerHTML = '<img class="title" src="https://i.pinimg.com/474x/99/9d/46/999d463a6a2167f08610fed7d4f185d3--hbo-game-of-thrones-game-of-thrones-characters.jpg"></img>';
+var containerDiv = document.querySelector('.container');
+var mainDiv = document.querySelector('.main');
+var sideDiv = document.querySelector('.side');
+// var oneDiv = document.createElement('.div');
+
 function sortOutDeadCharacters(tomb) {
   for (var i = 0; i < tomb.length; i++) {
     if (tomb[i].dead === 'true') {
       tomb.splice(i, 1);
-      i--;
     }
   }
 }
@@ -57,16 +64,48 @@ function sortCharactersByName(tomb) {
 
 
 function insertCharacters(tomb) {
-  var main = document.querySelector('.main');
   for (var i = 0; i < tomb.length; i++) {
     var char = document.createElement('div');
     char.className = 'one-character';
-    char.id = 'character' + i;
-    // Megadok neki egy új tulajdonságot, chardata néven, ami az összes adatát fogja tartalmazni
+    char.id = 'character ' + i;
+    // itt megadok neki egy új tulajdonságot, amivel elmentem az összes adatát, hogy ne csak a név és kép legyen meg
     char.chardata = tomb[i];
     var ptag = tomb[i].name;
     var itag = tomb[i].portrait;
-    char.innerHTML = `<p>${ptag}</p> <img src="${itag}" alt="Picture not found">`;
-    main.appendChild(char);
+    char.innerHTML = `<p>${ptag}</p> <img src="${itag}" alt="Picture not found" class="char-img"></img>`;
+    mainDiv.appendChild(char);
   }
+}
+
+
+function showClickedCharacter() {
+  var chars = document.querySelectorAll('.one-character');
+  for (var i = 0; i < chars.length; i++) {
+    chars[i].addEventListener('click', function showOnSide() {
+      console.log(this.chardata);
+      setSideDiv(this.chardata);
+    });
+  }
+}
+
+function setSideDiv(character) {
+  onediv.innerHTML = '<img class="title" src="https://i.pinimg.com/474x/99/9d/46/999d463a6a2167f08610fed7d4f185d3--hbo-game-of-thrones-game-of-thrones-characters.jpg"></img>';
+  var itag = document.createElement('img');
+  var head = document.createElement('h2');
+  var ptag = document.createElement('p');
+  var icon = document.createElement('img');
+  icon.className = 'char-icon';
+  icon.alt = 'House icon not found!';
+  itag.className = 'char-picture';
+  itag.alt = 'Picture not found';
+
+  icon.src = '../assets/houses/' + character.house + '.png';
+  itag.src = character.picture;
+  head.innerHTML = character.name;
+  ptag.innerHTML = character.bio;
+
+  onediv.appendChild(itag);
+  onediv.appendChild(head);
+  onediv.appendChild(ptag);
+  onediv.appendChild(icon);
 }
