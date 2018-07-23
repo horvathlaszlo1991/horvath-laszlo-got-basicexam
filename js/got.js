@@ -27,6 +27,7 @@ function successAjax(xhttp) {
   sortCharactersByName(Data);
   insertCharacters(Data);
   showClickedCharacter(Data);
+  createSearchBar();
   console.log(Data);
 }
 
@@ -95,7 +96,7 @@ function showClickedCharacter() {
 
 
 // Beállítom a kattintott karakter képét, nevét, leírását, house ikonját az oldalsú divbe.
-// Kicsit hosszú függvény, majd szebben is meg lehetne csinálni.
+// Kicsit hosszú függvény, majd szebben is meg lehetne csinálni...
 function setSideDiv(character) {
   onediv.innerHTML = '<img class="title" src="https://i.pinimg.com/474x/99/9d/46/999d463a6a2167f08610fed7d4f185d3--hbo-game-of-thrones-game-of-thrones-characters.jpg"></img>';
   var itag = document.createElement('img');
@@ -116,4 +117,22 @@ function setSideDiv(character) {
   onediv.appendChild(head);
   onediv.appendChild(ptag);
   onediv.appendChild(icon);
+}
+
+// Kereső létrehozása az oldalsó divben
+function createSearchBar() {
+  var searchbar = document.createElement('input');
+  var searchbutton = document.createElement('input');
+  var searchdiv = document.createElement('div');
+  searchdiv.className = 'search-div';
+  searchbutton.className = 'search search-button';
+  searchbar.className = 'search search-bar';
+  searchbar.type = 'text';
+  searchbutton.type = 'submit';
+  searchbutton.value = 'Search!';
+  searchbar.placeholder = 'Enter full name here';
+  // searchbutton.addEventListener('click', searchName);
+  searchdiv.appendChild(searchbar);
+  searchdiv.appendChild(searchbutton);
+  sideDiv.appendChild(searchdiv);
 }
