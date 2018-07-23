@@ -127,6 +127,8 @@ function setSideDiv(character) {
   onediv.innerHTML += `<h2>${character.name}</h2>`;
   onediv.innerHTML += `<p>${character.bio}</p>`;
   onediv.innerHTML += `<img src="../assets/houses/" + ${character.house} + ".png">`;
+
+  Ezt akár egybe is lehetne vonni egy nagy += segítségével, de így sokkal jobban átlátható, és még mindig Clean code :)
 }
 
 */
