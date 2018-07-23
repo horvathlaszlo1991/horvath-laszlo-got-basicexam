@@ -12,8 +12,11 @@ function getData(url, callbackFunc) {
 function successAjax(xhttp) {
   // itt a json content, benne a data változóban
   var userDatas = JSON.parse(xhttp.responseText);
+
+  // A Data nevű változóba elmentem a userDatas számomra fontos részét, a karaktereket, ezzel fogok dolgozni
   var Data = userDatas[2].data;
   console.log(userDatas);
+  console.log(Data);
   /*
       Pár sorral lejebb majd ezt olvashatod:
       IDE ÍRD A FÜGGVÉNYEKET!!!!!! NE EBBE AZ EGY SORBA HANEM INNEN LEFELÉ!
@@ -70,7 +73,7 @@ function insertCharacters(tomb) {
   for (var i = 0; i < tomb.length; i++) {
     var char = document.createElement('div');
     char.className = 'one-character';
-    char.id = 'character ' + i;
+    // Lehetne neki ID-t adni, de végülis nem használtam: char.id = 'character ' + i;
     // itt megadok neki egy új tulajdonságot (chardata), amivel elmentem az összes adatát, hogy ne csak a név és kép legyen meg.
     char.chardata = tomb[i];
     var ptag = tomb[i].name;
