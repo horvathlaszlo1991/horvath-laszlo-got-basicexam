@@ -1,5 +1,6 @@
 Adatbázis létrehozása:
-CREATE DATABASE got;
+CREATE DATABASE IF NOT EXISTS got 
+ DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 Táblázat létrehozása:
 CREATE TABLE characters (
