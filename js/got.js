@@ -44,6 +44,8 @@ var mainDiv = document.querySelector('.main');
 var sideDiv = document.querySelector('.side');
 // var oneDiv = document.createElement('.div');
 
+
+// Kiszűröm a halott karaktereket.
 function sortOutDeadCharacters(tomb) {
   for (var i = 0; i < tomb.length; i++) {
     if (tomb[i].dead === 'true') {
@@ -52,6 +54,7 @@ function sortOutDeadCharacters(tomb) {
   }
 }
 
+// Név szerint rendezem a karaktereket.
 function sortCharactersByName(tomb) {
   for (var i = 0; i < tomb.length - 1; i++) {
     for (var j = i + 1; j < tomb.length; j++) {
@@ -63,12 +66,13 @@ function sortCharactersByName(tomb) {
 }
 
 
+// Hozzáadom a karakterek képét és nevét a mainDiv-hez.
 function insertCharacters(tomb) {
   for (var i = 0; i < tomb.length; i++) {
     var char = document.createElement('div');
     char.className = 'one-character';
     char.id = 'character ' + i;
-    // itt megadok neki egy új tulajdonságot, amivel elmentem az összes adatát, hogy ne csak a név és kép legyen meg
+    // itt megadok neki egy új tulajdonságot (chardata), amivel elmentem az összes adatát, hogy ne csak a név és kép legyen meg.
     char.chardata = tomb[i];
     var ptag = tomb[i].name;
     var itag = tomb[i].portrait;
@@ -78,6 +82,7 @@ function insertCharacters(tomb) {
 }
 
 
+// Eseményfigyelőt állítok az összes karakter div-re.
 function showClickedCharacter() {
   var chars = document.querySelectorAll('.one-character');
   for (var i = 0; i < chars.length; i++) {
@@ -88,6 +93,9 @@ function showClickedCharacter() {
   }
 }
 
+
+// Beállítom a kattintott karakter képét, nevét, leírását, house ikonját az oldalsú divbe.
+// Kicsit hosszú függvény, majd szebben is meg lehetne csinálni.
 function setSideDiv(character) {
   onediv.innerHTML = '<img class="title" src="https://i.pinimg.com/474x/99/9d/46/999d463a6a2167f08610fed7d4f185d3--hbo-game-of-thrones-game-of-thrones-characters.jpg"></img>';
   var itag = document.createElement('img');
