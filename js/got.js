@@ -28,7 +28,6 @@ function successAjax(xhttp) {
   insertCharacters(Data);
   showClickedCharacter(Data);
   createSearchBar();
-  console.log(Data);
 }
 
 // Írd be a json fileod nevét/útvonalát úgy, ahogy nálad van
@@ -40,7 +39,6 @@ getData('/json/characters.json', successAjax);
 
 var onediv = document.querySelector('.onediv');
 onediv.innerHTML = '<img class="title" src="https://i.pinimg.com/474x/99/9d/46/999d463a6a2167f08610fed7d4f185d3--hbo-game-of-thrones-game-of-thrones-characters.jpg"></img>';
-var containerDiv = document.querySelector('.container');
 var mainDiv = document.querySelector('.main');
 var sideDiv = document.querySelector('.side');
 // var oneDiv = document.createElement('.div');
@@ -88,7 +86,6 @@ function showClickedCharacter() {
   var chars = document.querySelectorAll('.one-character');
   for (var i = 0; i < chars.length; i++) {
     chars[i].addEventListener('click', function showOnSide() {
-      console.log(this.chardata);
       setSideDiv(this.chardata);
     });
   }
