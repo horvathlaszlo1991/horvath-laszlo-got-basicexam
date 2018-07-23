@@ -131,8 +131,19 @@ function createSearchBar() {
   searchbutton.type = 'submit';
   searchbutton.value = 'Search!';
   searchbar.placeholder = 'Enter full name here';
-  // searchbutton.addEventListener('click', searchName);
+  searchbutton.addEventListener('click', searchName);
   searchdiv.appendChild(searchbar);
   searchdiv.appendChild(searchbutton);
   sideDiv.appendChild(searchdiv);
+}
+
+function searchName() {
+  onediv.innerHTML = '<h3>Character not found!</h3>';
+  var input = document.querySelector('.search-bar').value.toLowerCase();
+  var characters = document.querySelectorAll('.one-character');
+  for (var i = 0; i < characters.length; i++) {
+    if (characters[i].chardata.name.toLowerCase() === input) {
+      setSideDiv(characters[i]);
+    }
+  }
 }
