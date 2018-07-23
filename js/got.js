@@ -95,8 +95,8 @@ function showClickedCharacter() {
 }
 
 
-// Beállítom a kattintott karakter képét, nevét, leírását, house ikonját az oldalsú divbe.
-// Kicsit hosszú függvény, majd szebben is meg lehetne csinálni...
+// Beállítom a kattintott karakter képét, nevét, leírását, house ikonját az oldalsó karakter divbe.
+// Kicsit hosszú függvény, majd szebben is meg lehetne csinálni (lásd lejjebb)...
 function setSideDiv(character) {
   onediv.innerHTML = '<img class="title" src="https://i.pinimg.com/474x/99/9d/46/999d463a6a2167f08610fed7d4f185d3--hbo-game-of-thrones-game-of-thrones-characters.jpg"></img>';
   var itag = document.createElement('img');
@@ -118,6 +118,18 @@ function setSideDiv(character) {
   onediv.appendChild(ptag);
   onediv.appendChild(icon);
 }
+
+/*
+Így lehetne rövidebb, csak a fenti módszerrel jobban tudom külön-külön formázni őket CSS-ben, ha kell...
+
+  onediv.innerHTML = '<img class="title" src="https://i.pinimg.com/474x/99/9d/46/999d463a6a2167f08610fed7d4f185d3--hbo-game-of-thrones-game-of-thrones-characters.jpg"></img>';
+  onediv.innerHTML += `<img src="${character.picture}">`;
+  onediv.innerHTML += `<h2>${character.name}</h2>`;
+  onediv.innerHTML += `<p>${character.bio}</p>`;
+  onediv.innerHTML += `<img src="../assets/houses/" + ${character.house} + ".png">`;
+}
+
+*/
 
 // Kereső létrehozása az oldalsó divben
 function createSearchBar() {
@@ -143,7 +155,7 @@ function searchName() {
   var characters = document.querySelectorAll('.one-character');
   for (var i = 0; i < characters.length; i++) {
     if (characters[i].chardata.name.toLowerCase() === input) {
-      setSideDiv(characters[i]);
+      setSideDiv(characters[i].chardata);
     }
   }
 }
