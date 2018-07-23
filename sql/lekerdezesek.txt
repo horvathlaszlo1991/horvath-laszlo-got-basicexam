@@ -1,0 +1,20 @@
+A) feladat:
+
+SELECT house, COUNT(id) FROM `characters` WHERE dead = "" AND organization = "" GROUP BY house;
+
+
+B) feladat:
+
+SELECT * FROM `characters` WHERE dead = "" AND bio LIKE '%hero%';
+
+
+C) feladat:
+
+SELECT * FROM `characters` WHERE organization = 'nightwatch' AND dead = "" AND house = "";
+
+
+D) feladat:
+
+SELECT name AS hero, alias AS 'Nick name', house AS 'Big House' FROM `characters` WHERE dead = "" AND NOT house = "lannister" AND NOT organization = "royalguard" AND NOT bio LIKE "%Lannister%" AND NOT bio LIKE "%King's Landing%";
+
+// a feladat szövegében Lennister van, de itt beszéltük, hogy az Lannister akart lenni

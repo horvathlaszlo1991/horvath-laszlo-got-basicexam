@@ -1,0 +1,16 @@
+Adatbázis létrehozása:
+CREATE DATABASE got;
+
+Táblázat létrehozása:
+CREATE TABLE characters (
+    id INT(4) AUTO_INCREMENT PRIMARY KEY,
+    dead varchar(10),
+    name varchar(255) NOT NULL,
+    alias varchar(255),
+    portrait varchar(255) NOT NULL,
+    picture varchar(255) NOT NULL,
+    bio varchar(1000),
+    organization varchar(255),
+    house varchar(255)
+) DEFAULT CHARSET="utf8";
+
